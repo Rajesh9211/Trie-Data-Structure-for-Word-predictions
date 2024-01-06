@@ -53,7 +53,23 @@ void insert(string key)
  
     trav->isEndOfWord = true;
 }
-
+void insert(string key)
+{
+    
+    TrieNode *trav = root;
+ 
+    for(int i=0; i<key.length(); i++)
+    {
+        char c_ati = key[i];
+        if (trav->children[c_ati - 'a'] == NULL){
+            trav->children[c_ati - 'a'] = getNode(c_ati);
+        }
+        
+        trav = trav->children[c_ati - 'a'];
+    }
+ 
+    trav->isEndOfWord = true;
+}
 
 bool search(struct TrieNode *root, string key)
 {
